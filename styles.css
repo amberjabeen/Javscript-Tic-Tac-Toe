@@ -1,0 +1,57 @@
+body {
+  font-family: sans-serif;
+}
+
+#ttt-container {
+  display: grid;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 400px;
+  grid-template-rows: 105px 105px 105px;
+  grid-template-columns: 105px 105px 105px;
+}
+
+.ttt-space {
+  height: 100px;
+  width: 100px;
+  background-color: rgb(156, 156, 156);
+  font-size: 75px;
+  text-align: center;
+}
+
+#turn {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  margin: 10% auto;
+  font-size: 30px;
+}
+
+#win-modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(27, 150, 33, 0.616);
+  
+  text-align: center;
+}
+
+#win-modal div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin:  auto;
+  padding: 20px;
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  font-size: 40px;
+}
