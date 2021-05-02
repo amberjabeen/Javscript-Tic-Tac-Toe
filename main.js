@@ -13,18 +13,8 @@ const gameBoard = (() => {
   return {board, spaces}
 })()
 
-
-// Player Factory
-const Player = (piece) => {
-  const makeMove = (space) => gameBoard.board[space] = piece
-  return {makeMove}
-}
-
-
 // Game IIFE
 const Game = (() => {
-  const player1 = Player('x')
-  const player2 = Player('o')
   const winModal = document.getElementById("win-modal")
   const winModalText = document.getElementById("win-modal-text")
   let turn = 'x'
@@ -41,10 +31,11 @@ const Game = (() => {
       [gameBoard.board[0],gameBoard.board[4],gameBoard.board[8]],
       [gameBoard.board[2],gameBoard.board[4],gameBoard.board[6]]
     ]
-
+    let winner = false
     for (let i = 0; i < triples.length; i++) {
       const triple = triples[i];
-      let winner = false
+      
+      
       if (triple.every(item => item == 'x') || triple.every(item => item == 'o')) {
         winModal.style.display = 'flex'
         winner = true
@@ -56,15 +47,12 @@ const Game = (() => {
           winModalText.innerHTML = "X's Win!"
           console.log("x win")
         }
-        break
       }
-
-      else if (gameBoard.board.every(value => value !== 0)) {
-        winModalText.innerHTML = "The game was a tie!"
-        winModal.style.backgroundColor = "rgba(138, 150, 27, 0.616)"
-        winModal.style.display = "flex"
-        console.log(winner)
-      }
+    }
+    if (gameBoard.board.every(value => value !== 0) && !winner) {
+      winModalText.innerHTML = "The game was a tie!"
+      winModal.style.backgroundColor = "rgba(138, 150, 27, 0.616)"
+      winModal.style.display = "flex"
     }
   }
   for (let i = 0; i < gameBoard.spaces.length; i++) {
@@ -98,5 +86,3 @@ const Game = (() => {
 })()
 
 document.getElementById("restart").addEventListener('click', function(){location.reload()})
-
-console.log([1,2,1].every(item => item == 1))
